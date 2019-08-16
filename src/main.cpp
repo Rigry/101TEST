@@ -75,6 +75,8 @@ int main()
       UART::Settings uart_set;   // 2
       uint16_t modbus_address;   // 3
       Sense    input;            // 4
+      uint16_t qty_input;        // 5
+      uint16_t qty_output;       // 6
 
    }__attribute__((packed));
 
@@ -83,10 +85,12 @@ int main()
          (flash.modbus_address, flash.uart_set);
 
 
-   slave.outRegs.device_code        = 7; // см ЭО-76
+   slave.outRegs.device_code        = 101; // test_version
    slave.outRegs.factory_number     = flash.factory_number;
    slave.outRegs.uart_set           = flash.uart_set;
    slave.outRegs.modbus_address     = flash.modbus_address;
+   slave.outRegs.qty_input          = 4;
+   slave.outRegs.qty_output         = 4;
 
    while(1){
 
